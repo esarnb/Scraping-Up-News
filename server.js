@@ -13,9 +13,8 @@ var db = require("./models");
 
 //Express middleware
 app.use(express.json());
+app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
-// app.use(express.static("public"));
-app.use(express.static(path.join(__dirname, 'public')));
 
 //Handlebars initialization
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -23,7 +22,7 @@ app.set("view engine", "handlebars");
 
 //Mongo remote/local initialization
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true }).then(() => console.log("Connected to db")).catch((err) => console.log(err));
 
 //Import routes
 require("./controller/routes.js")(app, db)

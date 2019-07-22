@@ -1,3 +1,16 @@
 body {
   background-color: antiquewhite;
 }
+
+.card-content {
+  height: 100px;
+  overflow: auto;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: orange;
+}
