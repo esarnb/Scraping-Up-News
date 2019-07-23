@@ -16,9 +16,9 @@
         </div> </a>
         
         <div class="card-action">
-          <a href="#" class="allNotes">All Notes</a>
-          <a href="#" class="addNotes">Add Note</a>
-          <a href="#" class="save">Save</a>
+          <a  class="waves-effect waves-light btn modal-trigger allNotes"  href="#!" data-article-id="{{this._id}}" data-article-title="{{title}}">All Notes</a>
+          <a  class="waves-effect waves-light btn modal-trigger addNotes"  href="#!" data-article-id="{{this._id}}" data-article-title="{{title}}">Add Note</a>
+          <a  class="waves-effect waves-light btn modal-trigger saveNotes" href="#!" data-article-id="{{this._id}}" data-article-title="{{title}}">Save</a>
         </div>
 
       </div>
@@ -29,6 +29,46 @@
         <h3>No saved articles in the database! You must scrape first.</h3>
         <a href="/">Home</a>
     {{/unless}}
+
+
+  <!-- All Notes -->
+  <div id="allNotesModal" class="modal">
+    <div class="modal-content">
+      <h4>All Notes</h4>
+      <div id="insertNotes">
+        
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+
+{{!-- Modal Overlay --}}
+<div class="modal-overlay" style="z-index: 1; display: none; opacity: 0.5;"></div>
+  
+  <!-- Add Notes -->
+  <div id="addNotesModal" class="modal">
+    <div class="modal-content">
+      <h4>Add Notes</h4>
+
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s8">
+                <textarea id="newNote" class="materialize-textarea"></textarea>
+                <label for="textarea1">Textarea</label>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="waves-effect waves-green btn-flat" id="newNoteSubmit">Submit</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
 
 
   </div>

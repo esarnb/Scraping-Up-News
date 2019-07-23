@@ -18,3 +18,12 @@ a:hover {
 .centering {
   text-align: center;
 }
+
+.modal {
+  z-index: 2;
+}
+
+.model-overlay {
+  z-index: 1;
+  display: none;
+}

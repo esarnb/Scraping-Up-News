@@ -38,7 +38,6 @@ module.exports = function(app, db) {
     db.Article.find({})
       .then(function(dbArticle) {
         for (let i = 1; i <= dbArticle.length; i++) { dbArticle[i-1].position = i; }
-        for (let i = 1; i <= dbArticle.length; i++) { dbArticle[i-1].src = "images/articles/esar.jpg"; }
         res.render("articles", {articles: dbArticle});
       })
       .catch(function(err) {
@@ -46,15 +45,36 @@ module.exports = function(app, db) {
       });
   });
 
-  
-  app.get("articles/:id", function(req, res) {
+  app.get("/articles/:id", function(req, res) {
+    db.Article.findOne({ _id: req.params.id })
+    .populate()
+    .then(function(dbArticle) {
+        res.json(dbArticle);
+      })
+      .catch(function(err) {
+        res.json(err);
+      });
+  });
 
-  })
-  app.post("articles/:id", function(req, res) {
+  app.post("/articles/:id", function(req, res) {
+    db.Note.create(req.body)
+      .then(function(dbNote) {
+        return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
+      })
+      .then(function(dbArticle) {
+        console.log(dbArticle);
+        
+        res.json(dbArticle);
+      })
+      .catch(function(err) {
+        res.json(err);
+      });
+  });
 
+  app.put("/articles/:id", function(req, res) {
+    res.json({error: "not implemented"})
   })
-  app.put("articles/:id", function(req, res) {
 
-  })
+  app.get("/articles/saved")
 
 }
