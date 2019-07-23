@@ -22,7 +22,7 @@ app.set("view engine", "handlebars");
 
 //Mongo remote/local initialization
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true }).then(() => console.log("Connected to db")).catch((err) => console.log(err));
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useFindAndModify: false }).then(() => console.log("Connected to db")).catch((err) => console.log(err));
 
 //Import routes
 require("./controller/routes.js")(app, db)
