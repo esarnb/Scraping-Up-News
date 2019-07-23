@@ -5,18 +5,30 @@
     <div class="col s12 m6 l4 xl3 flip-card">
       <div class="card">
       <a href="{{link}}" target="_blank">
+        
         <div class="card-image">
           <img src="{{src}}">
           {{!-- <span class="card-title"></span> --}}
         </div>
+        
         <div class="card-content">
           <p> {{position}}. {{title}} </p>
         </div> </a>
+        
         <div class="card-action">
           <a href="#" class="allNotes">All Notes</a>
           <a href="#" class="addNotes">Add Note</a>
+          <a href="#" class="save">Save</a>
         </div>
+
       </div>
     </div>
     {{/each}}
+
+    {{#unless articles}}
+        <h3>No saved articles in the database! You must scrape first.</h3>
+        <a href="/">Home</a>
+    {{/unless}}
+
+
   </div>

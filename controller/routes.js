@@ -45,4 +45,16 @@ module.exports = function(app, db) {
         console.log(err);
       });
   });
+
+  
+  app.get("articles/:id", function(req, res) {
+
+  })
+  app.post("articles/:id", function(req, res) {
+
+  })
+  app.put("articles/:id", function(req, res) {
+
+  })
+
 }
