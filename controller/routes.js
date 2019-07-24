@@ -9,11 +9,9 @@ module.exports = function(app, db) {
 
   //Scrape data using axios, parse using cheerio, send to database.
   app.get("/api/scrape", function(req, res) {
-    // https://spacenews.com/segment/news/
-    // http://www.echojs.com/
     axios.get("http://www.echojs.com/").then(function(response) {
       var $ = cheerio.load(response.data);
-      //.launch-article
+
       var result = {};
       $("article h2").each(function() {
 

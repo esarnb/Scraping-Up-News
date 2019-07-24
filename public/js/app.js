@@ -112,5 +112,9 @@ $(function() {
     })
   })
 
+  $(document).on("click", ".saveNotes", function(event) {
+    window.location.reload()
+  })
+
 });
 
